@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SE Palmeiras - O Maior Campeão do Brasil</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        palmeiras: {
+                            dark: '#003319',
+                            DEFAULT: '#006437',
+                            light: '#008c4d',
+                            accent: '#10b981',
+                            gold: '#d4af37',
+                            goldHover: '#b59325'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF5C0 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-image: linear-gradient(to bottom right, #D4AF37, #856108) 1;
+        }
+        .bg-palmeiras-pattern {
+            background-color: #004d2a;
+            background-image: radial-gradient(#006437 1.5px, transparent 1.5px), radial-gradient(#006437 1.5px, #003319 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #003319;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+        .glow-gold {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans antialiased custom-scrollbar">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-palmeiras-dark/95 backdrop-blur-md border-b border-palmeiras-gold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Brand -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-full border-2 border-palmeiras-gold flex items-center justify-center bg-palmeiras overflow-hidden shadow-lg group-hover:scale-105 transition-transform">
+                        <svg class="w-10 h-10 text-white fill-current" viewBox="0 0 100 100">
+                            <!-- Shield Outline -->
+                            <circle cx="50" cy="50" r="48" fill="#006437" stroke="#D4AF37" stroke-width="3"/>
+                            <circle cx="50" cy="50" r="38" fill="white"/>
+                            <circle cx="50" cy="50" r="35" fill="#006437"/>
+                            <!-- Letter P -->
+                            <text x="50" y="62" font-family="'Montserrat', sans-serif" font-weight="900" font-size="38" fill="white" text-anchor="middle">P</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-wider block leading-none">PALMEIRAS</span>
+                        <span class="text-xs text-palmeiras-gold font-semibold tracking-widest uppercase">Maior Campeão do Brasil</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6 text-sm font-semibold uppercase tracking-wider">
+                    <a href="#trofeus" class="hover:text-palmeiras-gold transition">Títulos</a>
+                    <a href="#elenco" class="hover:text-palmeiras-gold transition">Elenco</a>
+                    <a href="#jogos" class="hover:text-palmeiras-gold transition">Jogos</a>
+                    <a href="#hino" class="hover:text-palmeiras-gold transition">Hino & Cantos</a>
+                    <a href="#quiz" class="hover:text-palmeiras-gold transition">Quiz Verdão</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#quiz" class="bg-gradient-to-r from-palmeiras-gold to-yellow-600 text-palmeiras-dark font-bold px-5 py-2.5 rounded-full hover:opacity-90 transition shadow-md flex items-center gap-2">
+                        <i class="fa-solid fa-trophy">
+                        </i> Teste Seus Conhecimentos
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-palmeiras-dark border-b border-palmeiras-gold/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#trofeus" class="block text-gray-200 hover:text-palmeiras-gold font-semibold py-1">Títulos</a>
+            <a href="#elenco" class="block text-gray-200 hover:text-palmeiras-gold font-semibold py-1">Elenco</a>
+            <a href="#jogos" class="block text-gray-200 hover:text-palmeiras-gold font-semibold py-1">Jogos</a>
+            <a href="#hino" class="block text-gray-200 hover:text-palmeiras-gold font-semibold py-1">Hino & Cantos</a>
+            <a href="#quiz" class="block text-gray-200 hover:text-palmeiras-gold font-semibold py-1">Quiz Verdão</a>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative bg-palmeiras-pattern py-24 md:py-32 overflow-hidden border-b-4 border-palmeiras-gold">
+        <div class="absolute inset-0 bg-gradient-to-r from-palmeiras-dark via-palmeiras-dark/80 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+            
+            <div class="max-w-2xl text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-palmeiras-gold/20 border border-palmeiras-gold/40 text-palmeiras-gold text-xs font-bold uppercase tracking-widest mb-6">
+                    <i class="fa-solid fa-star"></i> Sociedade Esportiva Palmeiras
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none mb-6">
+                    Explicar a emoção de ser <span class="gold-gradient-text block mt-1">Palmeirense</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl font-light mb-8 leading-relaxed">
+                    A história mais gloriosa do futebol brasileiro. Das origens do Palestra Itália ao topo da América e do Mundo.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#trofeus" class="bg-palmeiras-gold hover:bg-palmeiras-goldHover text-palmeiras-dark font-extrabold px-8 py-3.5 rounded-lg transition transform hover:-translate-y-1 shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved"></i> Ver Conquistas
+                    </a>
+                    <a href="#hino" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-8 py-3.5 rounded-lg transition backdrop-blur-sm flex items-center gap-2">
+                        <i class="fa-solid fa-music"></i> Hino & Torcida
+                    </a>
+                </div>
+            </div>
+
+            <!-- Shield Display -->
+            <div class="relative flex-shrink-0">
+                <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-tr from-palmeiras-gold to-yellow-200 p-1 glow-gold animate-pulse">
+                    <div class="w-full h-full rounded-full bg-palmeiras-dark flex items-center justify-center p-6">
+                        <svg class="w-full h-full text-white fill-current drop-shadow-2xl" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="48" fill="#006437" stroke="#D4AF37" stroke-width="2"/>
+                            <circle cx="50" cy="50" r="40" fill="white"/>
+                            <circle cx="50" cy="50" r="36" fill="#006437"/>
+                            <text x="50" y="63" font-family="'Montserrat', sans-serif" font-weight="900" font-size="42" fill="white" text-anchor="middle">P</text>
+                        </svg>
+                    </div>
+                </div>
+                <!-- Floating Badges -->
+                <div class="absolute -top-4 -right-4 bg-palmeiras-gold text-palmeiras-dark font-black px-4 py-2 rounded-lg shadow-lg text-sm flex items-center gap-1.5">
+                    <i class="fa-solid fa-crown"></i> 12x Brasileirão
+                </div>
+                <div class="absolute -bottom-4 -left-4 bg-white text-palmeiras font-black px-4 py-2 rounded-lg shadow-lg text-sm flex items-center gap-1.5 border border-palmeiras">
+                    <i class="fa-solid fa-trophy text-palmeiras-gold"></i> 3x Libertadores
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Achievements / Trophies Section -->
+    <section id="trofeus" class="py-20 bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mb-4">
+                    Galeria de <span class="gold-gradient-text">Títulos</span>
+                </h2>
+                <div class="w-24 h-1 bg-palmeiras-gold mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    O maior campeão do Brasil. Uma trajetória marcada por hegemonia continental, copas e campeonatos nacionais.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Copa Rio 1951 (Mundial) -->
+                <div class="bg-gradient-to-b from-gray-900 to-palmeiras-dark/50 rounded-2xl p-6 border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 transform hover:-translate-y-2 shadow-xl group">
+                    <div class="w-14 h-14 rounded-xl bg-palmeiras-gold/10 border border-palmeiras-gold/30 flex items-center justify-center text-palmeiras-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-palmeiras-gold">1951</span>
+                    <h3 class="text-xl font-black text-white mt-1 mb-2">Copa Rio (Mundial)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        A primeira conquista de nível mundial do futebol de clubes, lavando a alma do futebol brasileiro no Maracanã.
+                    </p>
+                    <div class="text-2xl font-black text-palmeiras-gold">1x Campeão</div>
+                </div>
+
+                <!-- Taça Libertadores -->
+                <div class="bg-gradient-to-b from-gray-900 to-palmeiras-dark/50 rounded-2xl p-6 border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 transform hover:-translate-y-2 shadow-xl group">
+                    <div class="w-14 h-14 rounded-xl bg-palmeiras-gold/10 border border-palmeiras-gold/30 flex items-center justify-center text-palmeiras-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-palmeiras-gold">1999, 2020, 2021</span>
+                    <h3 class="text-xl font-black text-white mt-1 mb-2">Copa Libertadores</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Tricampeão da América com noites inesquecíveis no Palestra Itália, Maracanã e Centenário.
+                    </p>
+                    <div class="text-2xl font-black text-palmeiras-gold">3x Campeão</div>
+                </div>
+
+                <!-- Campeonato Brasileiro -->
+                <div class="bg-gradient-to-b from-gray-900 to-palmeiras-dark/50 rounded-2xl p-6 border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 transform hover:-translate-y-2 shadow-xl group">
+                    <div class="w-14 h-14 rounded-xl bg-palmeiras-gold/10 border border-palmeiras-gold/30 flex items-center justify-center text-palmeiras-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-palmeiras-gold">Hegemonia Nacional</span>
+                    <h3 class="text-xl font-black text-white mt-1 mb-2">Brasileirão</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        O indiscutível Maior Campeão do Brasil, dominando o país em diferentes décadas e gerações.
+                    </p>
+                    <div class="text-2xl font-black text-palmeiras-gold">12x Campeão</div>
+                </div>
+
+                <!-- Copa do Brasil -->
+                <div class="bg-gradient-to-b from-gray-900 to-palmeiras-dark/50 rounded-2xl p-6 border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 transform hover:-translate-y-2 shadow-xl group">
+                    <div class="w-14 h-14 rounded-xl bg-palmeiras-gold/10 border border-palmeiras-gold/30 flex items-center justify-center text-palmeiras-gold text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-palmeiras-gold">1998, 2012, 2015, 2020</span>
+                    <h3 class="text-xl font-black text-white mt-1 mb-2">Copa do Brasil</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Tetracampeão do maior torneio mata-mata nacional, marcando a história do Allianz Parque.
+                    </p>
+                    <div class="text-2xl font-black text-palmeiras-gold">4x Campeão</div>
+                </div>
+
+            </div>
+
+            <!-- Additional Honors List -->
+            <div class="mt-12 bg-palmeiras-dark/40 border border-palmeiras-gold/20 rounded-2xl p-6 sm:p-8 flex flex-wrap justify-around items-center gap-6 text-center">
+                <div>
+                    <span class="block text-3xl font-black text-white">26x</span>
+                    <span class="text-xs text-palmeiras-gold font-semibold uppercase tracking-wider">Campeão Paulista</span>
+                </div>
+                <div class="w-px h-10 bg-palmeiras-gold/20 hidden sm:block"></div>
+                <div>
+                    <span class="block text-3xl font-black text-white">1x</span>
+                    <span class="text-xs text-palmeiras-gold font-semibold uppercase tracking-wider">Supercopa do Brasil</span>
+                </div>
+                <div class="w-px h-10 bg-palmeiras-gold/20 hidden sm:block"></div>
+                <div>
+                    <span class="block text-3xl font-black text-white">1x</span>
+                    <span class="text-xs text-palmeiras-gold font-semibold uppercase tracking-wider">Recopa Sul-Americana</span>
+                </div>
+                <div class="w-px h-10 bg-palmeiras-gold/20 hidden sm:block"></div>
+                <div>
+                    <span class="block text-3xl font-black text-white">5x</span>
+                    <span class="text-xs text-palmeiras-gold font-semibold uppercase tracking-wider">Torneio Rio-São Paulo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Squad & Abel Ferreira Section -->
+    <section id="elenco" class="py-20 bg-gray-900 border-t border-b border-palmeiras-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mb-2">
+                        Nossos <span class="gold-gradient-text">Protagonistas</span>
+                    </h2>
+                    <p class="text-gray-400">Comandantes e craques que honram o manto alviverde.</p>
+                </div>
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="squad-tabs">
+                    <button onclick="filterSquad('todos')" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider bg-palmeiras-gold text-palmeiras-dark transition" data-category="todos">Todos</button>
+                    <button onclick="filterSquad('comando')" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider bg-gray-800 text-gray-300 hover:text-white transition" data-category="comando">Comando</button>
+                    <button onclick="filterSquad('idolos')" class="tab-btn px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider bg-gray-800 text-gray-300 hover:text-white transition" data-category="idolos">Destaques</button>
+                </div>
+            </div>
+
+            <!-- Grid of Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="squad-grid">
+                
+                <!-- Abel Ferreira -->
+                <div class="squad-card comando bg-gray-950 rounded-2xl overflow-hidden border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 group">
+                    <div class="h-64 bg-gradient-to-t from-gray-950 via-palmeiras-dark to-palmeiras relative flex items-end justify-center p-4">
+                        <i class="fa-solid fa-user-tie text-8xl text-white/20 absolute top-6"></i>
+                        <div class="text-center relative z-10">
+                            <span class="bg-palmeiras-gold text-palmeiras-dark font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Técnico Lendário</span>
+                            <h3 class="text-2xl font-black text-white">Abel Ferreira</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 border-t border-gray-800">
+                        <p class="text-xs text-palmeiras-gold font-semibold uppercase mb-1">Cabeça Fria, Coração Quente</p>
+                        <p class="text-gray-400 text-xs">Técnico mais vitorioso da era moderna do Palmeiras, multicampeão da América e do Brasil.</p>
+                    </div>
+                </div>
+
+                <!-- Dudu -->
+                <div class="squad-card idolos bg-gray-950 rounded-2xl overflow-hidden border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 group">
+                    <div class="h-64 bg-gradient-to-t from-gray-950 via-palmeiras-dark to-palmeiras relative flex items-end justify-center p-4">
+                        <span class="absolute top-4 right-4 text-4xl font-black text-white/20">7</span>
+                        <i class="fa-solid fa-shirt text-8xl text-white/20 absolute top-6"></i>
+                        <div class="text-center relative z-10">
+                            <span class="bg-palmeiras-light text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Atacante / Ídolo</span>
+                            <h3 class="text-2xl font-black text-white">Dudu</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 border-t border-gray-800">
+                        <p class="text-xs text-palmeiras-gold font-semibold uppercase mb-1">O Baixola</p>
+                        <p class="text-gray-400 text-xs">Símbolo da reconstrução palmeirense, protagonista em múltiplos títulos nacionais e continentais.</p>
+                    </div>
+                </div>
+
+                <!-- Gustavo Gómez -->
+                <div class="squad-card idolos bg-gray-950 rounded-2xl overflow-hidden border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 group">
+                    <div class="h-64 bg-gradient-to-t from-gray-950 via-palmeiras-dark to-palmeiras relative flex items-end justify-center p-4">
+                        <span class="absolute top-4 right-4 text-4xl font-black text-white/20">15</span>
+                        <i class="fa-solid fa-shield-halved text-8xl text-white/20 absolute top-6"></i>
+                        <div class="text-center relative z-10">
+                            <span class="bg-palmeiras-light text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Zagueiro / Capitão</span>
+                            <h3 class="text-2xl font-black text-white">Gustavo Gómez</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 border-t border-gray-800">
+                        <p class="text-xs text-palmeiras-gold font-semibold uppercase mb-1">Xerife Alviverde</p>
+                        <p class="text-gray-400 text-xs">Liderança incontestável na defesa, o zagueiro mais vitorioso da história do clube.</p>
+                    </div>
+                </div>
+
+                <!-- Estêvão / Jóias da Academia -->
+                <div class="squad-card idolos bg-gray-950 rounded-2xl overflow-hidden border border-palmeiras-gold/30 hover:border-palmeiras-gold transition duration-300 group">
+                    <div class="h-64 bg-gradient-to-t from-gray-950 via-palmeiras-dark to-palmeiras relative flex items-end justify-center p-4">
+                        <span class="absolute top-4 right-4 text-4xl font-black text-white/20">41</span>
+                        <i class="fa-solid fa-bolt text-8xl text-white/20 absolute top-6"></i>
+                        <div class="text-center relative z-10">
+                            <span class="bg-palmeiras-gold text-palmeiras-dark font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">Cria da Academia</span>
+                            <h3 class="text-2xl font-black text-white">Estêvão</h3>
+                        </div>
+                    </div>
+                    <div class="p-5 border-t border-gray-800">
+                        <p class="text-xs text-palmeiras-gold font-semibold uppercase mb-1">Futuro do Futebol</p>
+                        <p class="text-gray-400 text-xs">Talento espetacular formado nas categorias de base que encanta o mundo do futebol.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest / Upcoming Matches Section -->
+    <section id="jogos" class="py-20 bg-palmeiras-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mb-4">
+                    Agenda do <span class="gold-gradient-text">Verdão</span>
+                </h2>
+                <div class="w-20 h-1 bg-palmeiras-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                
+                <!-- Match Card (Próximo Jogo) -->
+                <div class="bg-gray-950 border-2 border-palmeiras-gold rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-6 border-b border-gray-800 pb-4">
+                        <span class="bg-palmeiras-gold/20 text-palmeiras-gold font-bold text-xs px-3 py-1 rounded-full uppercase tracking-widest border border-palmeiras-gold/30">
+                            <i class="fa-solid fa-calendar-days mr-1"></i> Próxima Partida
+                        </span>
+                        <span class="text-xs text-gray-400 font-semibold uppercase">Allianz Parque</span>
+                    </div>
+
+                    <div class="flex items-center justify-between my-8 text-center">
+                        <!-- Palmeiras -->
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-palmeiras border-2 border-palmeiras-gold flex items-center justify-center text-white font-black text-2xl shadow-lg mb-2">
+                                P
+                            </div>
+                            <span class="font-extrabold text-lg sm:text-xl text-white">PALMEIRAS</span>
+                            <span class="text-xs text-gray-400">Mandante</span>
+                        </div>
+
+                        <!-- VS / Date -->
+                        <div class="px-4">
+                            <span class="text-2xl font-black text-palmeiras-gold block mb-1">VS</span>
+                            <span class="text-xs bg-gray-800 px-3 py-1 rounded-md text-gray-300 font-bold block">16:00</span>
+                        </div>
+
+                        <!-- Opponent -->
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gray-800 border-2 border-gray-700 flex items-center justify-center text-gray-300 font-black text-xl mb-2">
+                                ADV
+                            </div>
+                            <span class="font-extrabold text-lg sm:text-xl text-white">RIVAL</span>
+                            <span class="text-xs text-gray-400">Visitante</span>
+                        </div>
+                    </div>
+
+                    <!-- Countdown Simulator -->
+                    <div class="bg-gray-900 rounded-xl p-4 border border-gray-800 flex justify-around text-center">
+                        <div>
+                            <span class="text-2xl font-black text-palmeiras-gold" id="count-days">02</span>
+                            <span class="block text-[10px] uppercase text-gray-400 font-semibold">Dias</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl font-black text-palmeiras-gold" id="count-hours">14</span>
+                            <span class="block text-[10px] uppercase text-gray-400 font-semibold">Horas</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl font-black text-palmeiras-gold" id="count-mins">35</span>
+                            <span class="block text-[10px] uppercase text-gray-400 font-semibold">Minutos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Results -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold uppercase text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-palmeiras-gold"></i> Últimos Resultados
+                    </h3>
+
+                    <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                            <span class="text-sm font-bold text-white">Palmeiras 2 x 1 São Paulo</span>
+                        </div>
+                        <span class="text-xs text-palmeiras-gold font-bold">Brasileirão</span>
+                    </div>
+
+                    <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                            <span class="text-sm font-bold text-white">Palmeiras 3 x 0 River Plate</span>
+                        </div>
+                        <span class="text-xs text-palmeiras-gold font-bold">Libertadores</span>
+                    </div>
+
+                    <div class="bg-gray-950 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                            <span class="text-sm font-bold text-white">Santos 0 x 2 Palmeiras</span>
+                        </div>
+                        <span class="text-xs text-palmeiras-gold font-bold">Paulistão</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Anthem & Chants Section -->
+    <section id="hino" class="py-20 bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mb-4">
+                    Cante com a <span class="gold-gradient-text">Torcida</span>
+                </h2>
+                <div class="w-24 h-1 bg-palmeiras-gold mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400">Sinta o orgulho e a energia do Palestra em cada verso.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <!-- Official Anthem Box -->
+                <div class="bg-gray-900 rounded-3xl p-6 sm:p-8 border border-palmeiras-gold/30 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-black text-white flex items-center gap-2">
+                                <i class="fa-solid fa-music text-palmeiras-gold"></i> Hino Oficial
+                            </h3>
+                            <span class="text-xs text-palmeiras-gold font-bold uppercase tracking-wider">Antônio Sergi</span>
+                        </div>
+
+                        <!-- Audio Simulator Controller -->
+                        <div class="bg-palmeiras-dark/80 p-4 rounded-2xl border border-palmeiras-gold/20 mb-6 flex items-center gap-4">
+                            <button id="play-anthem-btn" class="w-12 h-12 rounded-full bg-palmeiras-gold text-palmeiras-dark flex items-center justify-center font-bold text-lg hover:scale-105 transition">
+                                <i class="fa-solid fa-play" id="play-icon"></i>
+                            </button>
+                            <div class="flex-1">
+                                <div class="text-xs font-bold text-white mb-1" id="anthem-status">Clique para ouvir a melodia</div>
+                                <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                                    <div id="anthem-progress" class="bg-palmeiras-gold h-full w-0 transition-all duration-300"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lyrics -->
+                        <div class="text-gray-300 space-y-4 text-sm sm:text-base leading-relaxed italic bg-gray-950/50 p-6 rounded-2xl border border-gray-800">
+                            <p>
+                                Quando surge o alviverde imponente<br>
+                                No gramado em que a luta o aguarda<br>
+                                Sabe bem o que vem pela frente<br>
+                                Que a vitória mais uma vez o aguarda!
+                            </p>
+                            <p class="text-palmeiras-gold font-semibold not-italic">
+                                Defesa que ninguém passa<br>
+                                Linha atacante de raça<br>
+                                Torcida que canta e vibra!
+                            </p>
+                            <p>
+                                Por nosso alviverde inteiro<br>
+                                Que sabe com ternura adorar<br>
+                                Surge o campeão do século<br>
+                                Palmeiras de tantas glórias!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Chants Accordion -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-black text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-bullhorn text-palmeiras-gold"></i> Cânticos da Arquibancada
+                    </h3>
+
+                    <!-- Chant 1 -->
+                    <div class="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden">
+                        <button onclick="toggleChant('chant-1')" class="w-full p-5 text-left font-bold text-white flex justify-between items-center hover:bg-gray-800/50 transition">
+                            <span>"Palmeiras, Meu Palmeiras!"</span>
+                            <i class="fa-solid fa-chevron-down text-palmeiras-gold transition-transform" id="icon-chant-1"></i>
+                        </button>
+                        <div id="chant-1" class="hidden p-5 pt-0 text-gray-300 text-sm border-t border-gray-800/50 leading-relaxed bg-gray-950/30">
+                            Palmeiras, meu Palmeiras!<br>
+                            Ganhar de você é bom demais!<br>
+                            Meu Palmeiras, meu único amor!<br>
+                            Te sigo por onde for!
+                        </div>
+                    </div>
+
+                    <!-- Chant 2 -->
+                    <div class="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden">
+                        <button onclick="toggleChant('chant-2')" class="w-full p-5 text-left font-bold text-white flex justify-between items-center hover:bg-gray-800/50 transition">
+                            <span>"Olê Olê, Eu Sou Palmeiras sim senhor!"</span>
+                            <i class="fa-solid fa-chevron-down text-palmeiras-gold transition-transform" id="icon-chant-2"></i>
+                        </button>
+                        <div id="chant-2" class="hidden p-5 pt-0 text-gray-300 text-sm border-t border-gray-800/50 leading-relaxed bg-gray-950/30">
+                            Olê olê, olê olê!<br>
+                            Eu sou Palmeiras, sim senhor!<br>
+                            E bebo todas que tiver!<br>
+                            Com o Palmeiras onde estiver!
+                        </div>
+                    </div>
+
+                    <!-- Chant 3 -->
+                    <div class="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden">
+                        <button onclick="toggleChant('chant-3')" class="w-full p-5 text-left font-bold text-white flex justify-between items-center hover:bg-gray-800/50 transition">
+                            <span>"Canta e Vibra!"</span>
+                            <i class="fa-solid fa-chevron-down text-palmeiras-gold transition-transform" id="icon-chant-3"></i>
+                        </button>
+                        <div id="chant-3" class="hidden p-5 pt-0 text-gray-300 text-sm border-t border-gray-800/50 leading-relaxed bg-gray-950/30">
+                            Dá-lhe meu Palmeiras!<br>
+                            Dá-lhe meu Palmeiras!<br>
+                            A torcida que canta e vibra com você!
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Palmeiras Interactive Quiz Game -->
+    <section id="quiz" class="py-20 bg-palmeiras-pattern relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="bg-gray-950 rounded-3xl p-6 sm:p-10 border-2 border-palmeiras-gold shadow-2xl">
+                <div class="text-center mb-8">
+                    <span class="bg-palmeiras-gold/20 text-palmeiras-gold font-extrabold text-xs px-3 py-1.5 rounded-full uppercase tracking-widest border border-palmeiras-gold/30">
+                        Desafio do Torcedor
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black uppercase text-white mt-3">
+                        Quiz <span class="gold-gradient-text">Verdão</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm mt-1">Você é um palmeirense de verdade? Prove seu conhecimento!</p>
+                </div>
+
+                <!-- Quiz Container -->
+                <div id="quiz-container">
+                    <div class="flex justify-between items-center text-xs text-gray-400 font-bold uppercase mb-4">
+                        <span id="question-number">Pergunta 1 de 4</span>
+                        <span id="quiz-score" class="text-palmeiras-gold">Pontos: 0</span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <h3 id="question-text" class="text-xl sm:text-2xl font-extrabold text-white mb-6">
+                        Carregando pergunta...
+                    </h3>
+
+                    <!-- Options Grid -->
+                    <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <!-- Dynamically filled -->
+                    </div>
+
+                    <!-- Feedback Box -->
+                    <div id="quiz-feedback" class="hidden p-4 rounded-xl text-center font-bold text-sm mb-6"></div>
+
+                    <!-- Next Button -->
+                    <button id="next-btn" onclick="nextQuestion()" class="hidden w-full bg-palmeiras-gold text-palmeiras-dark font-black py-3.5 rounded-xl hover:bg-palmeiras-goldHover transition uppercase tracking-wider">
+                        Próxima Pergunta <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Quiz Completion Card -->
+                <div id="quiz-result" class="hidden text-center py-8">
+                    <i class="fa-solid fa-trophy text-6xl text-palmeiras-gold mb-4 animate-bounce"></i>
+                    <h3 class="text-3xl font-black text-white mb-2">Parabéns, Alviverde!</h3>
+                    <p class="text-gray-300 text-lg mb-6" id="final-score-text">Você acertou 4 de 4 perguntas.</p>
+                    <button onclick="restartQuiz()" class="bg-palmeiras hover:bg-palmeiras-light text-white font-bold px-8 py-3.5 rounded-xl transition uppercase tracking-wider border border-palmeiras-gold">
+                        Jogar Novamente
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-palmeiras-dark text-gray-400 py-12 border-t border-palmeiras-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-6">
+                <div class="w-10 h-10 rounded-full border border-palmeiras-gold flex items-center justify-center bg-palmeiras">
+                    <span class="font-black text-white text-lg">P</span>
+                </div>
+                <span class="text-xl font-black text-white tracking-wider">SE PALMEIRAS</span>
+            </div>
+            <p class="text-sm max-w-md mx-auto mb-6">
+                Página dedicada à torcida palmeirense em todo o mundo. O Maior Campeão do Brasil.
+            </p>
+            <p class="text-xs text-gray-500">
+                &copy; 2026 Sociedade Esportiva Palmeiras Fan Site. Avanti Palestra!
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Squad Filtering
+        function filterSquad(category) {
+            const cards = document.querySelectorAll('.squad-card');
+            const btns = document.querySelectorAll('.tab-btn');
+
+            btns.forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.classList.add('bg-palmeiras-gold', 'text-palmeiras-dark');
+                    btn.classList.remove('bg-gray-800', 'text-gray-300');
+                } else {
+                    btn.classList.remove('bg-palmeiras-gold', 'text-palmeiras-dark');
+                    btn.classList.add('bg-gray-800', 'text-gray-300');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'todos' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Accordion for Chants
+        function toggleChant(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                el.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Audio Simulator for Anthem
+        let isPlaying = false;
+        let progressInterval = null;
+        const playBtn = document.getElementById('play-anthem-btn');
+        const playIcon = document.getElementById('play-icon');
+        const anthemStatus = document.getElementById('anthem-status');
+        const anthemProgress = document.getElementById('anthem-progress');
+
+        playBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                isPlaying = true;
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                anthemStatus.textContent = 'Reproduzindo Hino do Palmeiras...';
+                
+                let progress = 0;
+                anthemProgress.style.width = '0%';
+                
+                progressInterval = setInterval(() => {
+                    progress += 2;
+                    anthemProgress.style.width = progress + '%';
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+                        isPlaying = false;
+                        playIcon.classList.remove('fa-pause');
+                        playIcon.classList.add('fa-play');
+                        anthemStatus.textContent = 'Clique para ouvir novamente';
+                    }
+                }, 300);
+            } else {
+                isPlaying = false;
+                clearInterval(progressInterval);
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                anthemStatus.textContent = 'Pausado';
+            }
+        });
+
+        // Quiz Logic
+        const questions = [
+            {
+                question: "Em que ano o Palmeiras conquistou a primeira Copa Rio (Mundial)?",
+                options: ["1951", "1960", "1999", "1942"],
+                answer: 0
+            },
+            {
+                question: "Qual técnico comandou o Palmeiras no bicampeonato consecutivo da Libertadores (2020 e 2021)?",
+                options: ["Luiz Felipe Scolari", "Vanderlei Luxemburgo", "Abel Ferreira", "Cuca"],
+                answer: 2
+            },
+            {
+                question: "Quantos títulos de Campeonato Brasileiro o Palmeiras possui como maior campeão?",
+                options: ["10", "11", "12", "14"],
+                answer: 2
+            },
+            {
+                question: "Qual era o nome original do clube antes da alteração em 1942?",
+                options: ["Palestra Itália", "Germânia", "Paulistano", "Esporte Clube Palmeiras"],
+                answer: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('question-number').textContent = `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+            document.getElementById('question-text').textContent = q.question;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full p-4 rounded-xl bg-gray-900 border border-gray-800 text-left font-bold text-white hover:border-palmeiras-gold transition flex items-center justify-between";
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-gray-500"></i>`;
+                btn.onclick = () => selectOption(idx);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(index) {
+            const q = questions[currentQuestion];
+            const buttons = document.querySelectorAll('#options-container button');
+            const feedback = document.getElementById('quiz-feedback');
+
+            buttons.forEach(b => b.disabled = true);
+
+            if (index === q.answer) {
+                score++;
+                document.getElementById('quiz-score').textContent = `Pontos: ${score}`;
+                buttons[index].classList.add('bg-green-900/60', 'border-green-500');
+                feedback.textContent = "Resposta Correta! Avanti!";
+                feedback.className = "p-4 rounded-xl text-center font-bold text-sm mb-6 bg-green-900/40 border border-green-500 text-green-300";
+            } else {
+                buttons[index].classList.add('bg-red-900/60', 'border-red-500');
+                buttons[q.answer].classList.add('bg-green-900/60', 'border-green-500');
+                feedback.textContent = "Resposta Incorreta!";
+                feedback.className = "p-4 rounded-xl text-center font-bold text-sm mb-6 bg-red-900/40 border border-red-500 text-red-300";
+            }
+
+            feedback.classList.remove('hidden');
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById('quiz-container').classList.add('hidden');
+                document.getElementById('quiz-result').classList.remove('hidden');
+                document.getElementById('final-score-text').textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('quiz-score').textContent = `Pontos: 0`;
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        // Initialize Quiz
+        loadQuestion();
+    </script>
+</body>
+</html>
